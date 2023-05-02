@@ -276,35 +276,12 @@ add(25, 100);  // returns 125
 Here's a useful and common function used to generate a random integer between two numbers, inclusive:
 
 ```js
-function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
+function addNums(num1, num2) {
+  console.log(num1 + num2);
 }
 ```
 
-Yes, the function has a single statement, however, for learning purposes, let's break that single line of code into multiple steps as we code it together.
 
-> KEY POINT:  It's impossible to write code to complete a task if we can't identify the steps necessary to accomplish that task.
-
-Often, you may be able to simply verbalize to yourself the steps necessary.  However, especially when learning, it helps to write the steps within the function as comments as shown below:
-
-```js
-function getRandomInt(min, max) {
-  // Generate a random num between 0 and 0.999999...
-  
-  // Compute the "spread" (add 1 to make max inclusive)
-
-  // Compute the random "range" (0.0 up to the spread)
-
-  // Add min to the random range
-
-  // Truncate (chop off) the decimal portion
-
-  // return the result
-
-}
-```
-
-Now let's write the code below each commented step together.
 
 ### ❓ Review Questions - Functions (1 min)
 
@@ -333,28 +310,8 @@ What's the only practical difference between a Function Definition and a Functio
 <hr>
 </details>
 
-**Now it's your turn to practice!**
 
-## 4. 💪 Practice Exercise - Write a Function Expression (10 min)
-
-Write a function named `planetHasWater` as a **function expression**.
-
-It will have one parameter, `planet`, that accepts a string argument.
-
-Return `true` if the `planet` argument is either 'Earth' or 'Mars', otherwise return `false`.
-
-Bonus: Make the function work regardless of the casing of the planet string being passed in ('earth', 'MARS', etc.).
-
-Invoke the function a few times to test it:
-
-```js
-console.log( planetHasWater('Earth') ) //=> true
-console.log( planetHasWater('Venus') ) //=> false
-// Test the bonus...
-console.log( planetHasWater('mArS') ) //=> true
-```
-
-## 5. More About Parameters & Arguments
+## 4. More About Parameters & Arguments
 
 So, let's answer a common question:
 >  _"What's the difference between a parameter and an argument?"_
