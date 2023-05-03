@@ -1,705 +1,425 @@
-![](https://i.imgur.com/yxikhiY.jpg
-)
+### SEIR0508
+
 # JavaScript Functions
 
-| Learning Objectives - Students Will Be Able To |
-| :--- |
-| Understand the Use Case of Functions |
-| Code Functions as Definitions and Expressions |
-| Call Functions |
-| Explain the Difference Between Parameters and Arguments |
+![Functions](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.medianic.co.uk%2Fwp-content%2Fuploads%2F2019%2F01%2Fpractice-javascript-and-learn-functions-400x277.png&f=1&nofb=1)
 
-## Road Map
-1. What is a Function?
-2. Why Functions Anyway?
-3. Defining and Calling Functions
-4. Practice Exercise - Write a Function Expression
-5. More About Parameters & Arguments
-6. Further Study
+## Lesson Overview
+In this lesson, we'll learn all about functions in JavaScript.
 
-## 1. What is a function?
+## Objectives
+  - Learn the definition of a function
+  - Identify the parts of a function
+  - Differentiate between function defintions and function invocations
 
-**A function is a reusable block of code written to perform a single purpose.**
+## Lesson Instructions
 
-For example, let's say we're coding a game like Minesweeper and we want the player to be able to choose the size of the board:
+![Bueller](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn0.vox-cdn.com%2Fthumbor%2Faq1_iMjpkbMa06eymrPD0cEvIOs%3D%2Fcdn0.vox-cdn.com%2Fuploads%2Fchorus_asset%2Ffile%2F2539902%2Fgiphy.0.gif&f=1&nofb=1)
+
+**Function** is a term that comes out of mathematics. You may remember hearing it in your high school algebra class.
+
+The basic idea of a function is simple — it's a relationship between a set of inputs and a set of outputs.
+
+### Introduction: Functions
+
+Take a look at the relationship between the variable `x` and function named `f` in the example below.
+
+Function `f` takes in the input of `x` and returns a single output. Together, it looks like `f(x)`.
+
+Can you guess what this function does to the value of `x`?
+
+```
+f(-2) => -4
+f(-1) => -2
+f(0) => 0
+f(1) => 2
+f(2) => 4
+```
+
+Assuming that it's the same function, what is the output of:
+
+`f(f(3))`
+
+### Why are functions useful?
+
+In JavaScript, a function can be:
+
+1.  Made up of either a single reusable statement or even a *group* of reusable statements.
+2.  Can be called anywhere in the program, which allows for the statements inside a function to not be written over and over again.
+
+Functions are especially useful because they enable a developer to segment large, unwieldy applications into smaller, more manageable pieces. You might hear this described as making the code modular. Modularity is very good and very efficient.
+
+
+We're going to start off with some basics, such as simple math equations and string interpolation. But every time you Log In to a website, Like a post on Facebook, add an item to your cart on Amazon, or anything else we do across the web, we are working with Functions. But like those CSS properties, you will be amazed at how complex and powerful the functions you write in the coming weeks will be. 
+
+
+
+#### Example of using a function
+
+Here's an example of what a function can do:
+
+This repeats for every additional movie.
 
 ```js
-// Get player's choice of board size (S for small, M for medium, L for large)
-function getBoardSize() {
-  const validChoices = ['S', 'M', 'L'];
-  let size;
-  while (!validChoices.includes(size)) {
-    size = prompt('Enter the board size (S)mall, (M)edium or (L)arge: ').toUpperCase();
-  }
-  return size;
+const movie1 = 'Saving Private Ryan'
+const year1 = 1998
+console.log(`${movie1} was released in ${year1}`)
+
+const movie2 = 'Interstellar'
+const year2 = 2014
+console.log(`${movie2} was released in ${year2}`)
+
+const movie3 = 'Jason Bourne'
+const year3 = 2016
+console.log(`${movie3} was released in ${year3}`)
+```
+
+This is all easy enough to write out, but if we have a lot of movies this results in a lot of repeated code! Also, if we want to change the formatting, we have to change it in every place.
+
+![Interstellar](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.giphy.com%2Fmedia%2F12H0jWEKSo0N8c%2Fsource.gif&f=1&nofb=1)
+
+Let's try to keep our code from getting out of hand by using a function.
+
+```js
+function showMovie (movie, year) {
+  console.log(`${movie} was released in ${year}`)
+}
+
+showMovie('Saving Private Ryan', 1998)
+showMovie('Interstellar', 2014)
+showMovie('Jason Bourne', 2016)
+```
+
+Notice how much cleaner and simpler this function looks than our repeated lines of code?
+
+Using functions is a great way to save time for yourself, and simplify things for your team members.
+
+![DRY](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.giphy.com%2Fmedia%2FlqrJPaWIsjTZS%2Fgiphy.gif&f=1&nofb=1)
+
+#### DRY - Don't repeat yourself
+
+Functions are a critical component of programming because they allow us to execute on a key tenant of software engineering:
+
+"**D**on't **R**epeat **Y**ourself" (aka "DRY" code).
+
+Our goal is to craft our programs in as few lines of code as possible, while still being clear.
+
+##### Why should we avoid repetition?
+
+1.  **Performance** - Having repeated code will lead to longer scripts. Longer scripts take up more memory and will take more time to load, which can make a website seem slow.
+
+2.  **Maintainability** - Imagine that we have the same line of code repeated 10 times in our program. If we ever want to change that functionality, we would have to search for all 10 places where that code is repeated and make 10 individual changes.
+
+#### Why use functions - Summary
+
+[Check out this link to review the three main reasons that functions are created.](http://circuits-assets.generalassemb.ly/prod/asset/5016/Slide-17-Chart.svg)
+
+---
+
+## Arrow Function Expressions
+
+Now we know what functions are and why we use them. But how do we create them?
+
+As you saw in our movie example, just as we do with a variable, we must define a function before we call or "use" it.
+
+In JavaScript, functions can be defined in several ways. We will be focusing on using **arrow function expressions** since that is the modern way of writing them.
+
+#### Function Expressions - Overview
+
+Let's take a look at the different parts of the arrow function:
+
+```js
+const pickADescriptiveName = () => {
+  // code block
+}
+// 'pickADescriptiveName' is the function name
+// the parenthesis and arrow are short hand for the declaration of a function . . . also known as an arrow function
+// parentheses are needed and can have optional, multiple parameters, or default parameters
+```
+
+Have you ever tried to move forward to the next page of an online form, only to be greeted by an alert that says "Please fill out all the required fields"?
+
+This kind of code can be placed in a function and this function can be called anytime the user hasn't filled out a field on any form on the site. Let's code for this fake popup alert using a function expression:
+
+```js
+const errorAlert = () => {
+  alert('Please be sure to fill out all required fields')
 }
 ```
 
-As you can see above, the `return` statement can be used to return a JS expression.
+Let's take a look at the function in more detail:
 
-<details>
-<summary>
-❓ What is a <em>JS expression</em>
-</summary>
-<hr>
+1.  The first line begins by declaring a variable called `errorAlert`. This is the name that we can then use to call that function.
+2.  Next, you have a list of parameters surrounded by parentheses.  In very specific cases the parenthesis are optional, however, we suggest that you include the parentheses as you are gaining familiarity with functions.
+3.  The statements inside the function will run every time the function is called. The function body must always be wrapped in curly braces `{ }`, even when it consists of only a single statement. **NOTE** that there is an exception to this rule as well, however, we will still encourage you to always use curly braces as you are getting comfortable with functions.
 
-**A piece of code that JS evaluates into a single value or object**
+#### Naming Conventions
 
-<hr>
-</details>
+Now that we've learned about arrow functions, let's discuss naming conventions.
 
-Functions may be written to accept data as input.  The data passed to a function when called is known as **arguments**.
+You may have noticed how we capitalize names in JavaScript using the camelCase style.
 
-When writing the function, we define "placeholders" to accept the arguments and these placeholders are known as **parameters**.
+Let's take a quick look at some good and bad examples of function names, and what can cause them to break down:
 
-For example, let's say we're coding the game of Concentration and want to award a certain number of points based upon how much time it took to match all of the tiles:
+- **Ugly:** thisfunctioncalculatestheperimeterofarectangle
+  (no camelCase, too verbose)
 
-```js
-function getPointsScored(elapsedTime) {
-  if (elapsedTime < 30) {
-    return 100;
-  } else if (elapsedTime < 60) {
-    return 75;
-  } else {
-    return 25;
-  }
-}
+- **Bad:** my new function
+  (contains spaces)
 
-const points = getPointsScored(time);
-```
+- **Bad:** myNewFunction
+  (doesn't explain what it does!)
 
-<details>	
-<summary>❓ Assuming the variable <code>time</code> is equal to <code>50</code>, what will <code>points</code> equal?</summary>
-<hr>
-
-**`75`**
-
-<hr>
-</details>
-
-**Functions are the primary building blocks of programs.**
-
-For example, here is how a line-of-business (LOB) type of application might be structured using several functions...
-
-```js
-function main() {
-  let date = new Date();  // today's date
-  let sales = getSalesData(date);
-  let labor = getLaborCosts(date);
-  let budget = getBudget(date);
-  let report = generateReport(date, sales, labor, budget);
-  sendReport(report);
-}
-
-// Run the main function
-main();
-
-/*--- helper functions ---*/
-
-function getSalesData(forDate) {
-  let netSales = getNetSales(forDate);
-  let salesTax = computeSalesTax(netSales);
-  return {netSales, salesTax};
-}
-
-function getLaborCosts(forDate) {
-  // etc.
-}
-
-function getBudget(forDate) {
-  // etc.
-}
-
-function generateReport(forDate, dailySales, dailyLabor, budget) {
-  // etc.
-}
-
-function sendReport(report) {
-  // etc.
-}
-
-// etc.
-
-```
-
-**The code in a function does not execute until that function is called**.  In the above example, if not for `main();`, no code would execute!
-
-**When the JS engine loads the code, before executing it, it is checked for syntax errors.** A single syntax error prevents all of the code from running!
-
-**Functions commonly call other functions** like we saw above.  Here's another example:
-
-```js
-let size, board;
-
-function initialize() {
-  size = getBoardSize();
-  board = generateBoard(size);
-  renderBoard();
-}
-```
-
-**Programming languages themselves include functions** built into the language, e.g., `parseInt()`.
-
-## 2. Why Functions Anyway?
-
-### Tackle Complexity
-
-As humans, we typically tackle a complex task by breaking it into smaller tasks or steps - as developers, we do the same!
-
-Functions allow us to break up programs into more manageable blocks of code.
-
-### Code Reuse
-
-Functions provide code reuse because they can be called over and over, for example, a `renderBoard` function might be called every time the data in the `board` variable is changed.
-
-Without functions, we might have to write the same code in multiple places of the app which violates a key programming principle known as **DRY** - Don't Repeat Yourself!
-
-<details>	
-<summary>❓ Can you identify any downsides of repeating the same code in multiple places of a program?</summary>
-<hr>
-
-**It would make maintenance and future development of the app over time more difficult and expensive because changes to repeated block of code would require searching and updating all instances of that code.**
-
-<hr>
-</details>
-
-### Documentation
-
-Simply naming functions appropriately, e.g., `renderBoard`, documents what the program is doing.
-
-By using numerous, smaller and well-named functions, the code virtually becomes self-documenting thus eliminating the need to clutter the code with comments.
-
-> Note:  Comments should only be used to explain parts of the code that require explanation due to its complexity.  Never comment the obvious!
-
-### Summary
-
-In summary, it would be impractical if not impossible to create a comprehensive application without breaking up the application into functions!
-
-## 3. Defining and Calling Functions
-
-### Setup
-
-Let's create another **Node.js-based** Repl at [replit.com](https://replit.com/) and name it something like "JS Functions".
-
-Now we're ready to review some of what you might already know about functions and learn some cool new stuff too...
-
-### Defining Functions
-
-There are three primary ways to define functions in JS:
-
-1. Function Declaration/Definitions
-2. Function Expressions
-3. Arrow Functions
-
-#### 1) Function Declaration (AKA Function Definitions)
-
-```js
-function sayHello(name) {
-  console.log('Hello ' + name + '!');
-}
-```
-
-#### 2) Function Expression
-
-```js
-const sayHello = function(name) {
-  console.log('Hello ' + name + '!');
-};
-```
-
-<details>	
-<summary>❓ What similarities and/or differences do you see between the two approaches above?</summary>
-<hr>
-
-**They are very similar, but note how the function expression obtains its name from the variable it's assigned to (plus, it's followed by a semicolon).  However, there is one key usage difference that we'll discuss next...**
-
-<hr>
-</details>
-
-#### The Key Difference Between Function Declarations & Expressions
-
-For all practical purposes, the difference between them is that _function expressions_ cannot be invoked before they are defined; whereas _function declarations_ are internally "hoisted" to the top of their scope and can therefore be invoked even if they are defined later in the source code. 
-
-For example:
-
-```js
-fnDeclaration();  // thank you function declarations :)
-fnExpression();  // TypeError: fnExpression is not a function
-
-function fnDeclaration() {
-  console.log("I'm coming from a function declaration");
-}
-
-const fnExpression = function() {
-  console.log("I'm coming from a function expression");
-};
-```
-
-> Note: Attempting to execute a function expression before it's been assigned to its variable is the source of many an error for JS developers!
-
-#### 3) Arrow Functions
-
-ES2015 (ES6) delivered a third approach to defining functions - **Arrow Functions**.
-
-The following function declaration:
-
-```js
-// Function Declaration
-function add(a, b) {
-  return a + b;
-}
-```
-
-and the following arrow function are equivalent:
-
-```js
-// Arrow Function
-const add = (a, b) => a + b;
-```
-
-As you can see, Arrow Functions are more concise and can implicitly (automatically) return an expression. However, they can't always be used in place of non-Arrow functions due to the way they set the value of the `this` keyword (more on `this` in a future lesson). 
-
-We will have a dedicated lesson on arrow functions. For now, let's focus on function declarations & expressions since they have been around since the beginning of JS.
-
-### Calling Functions
-
-Regardless of which of the three approaches are used to define functions, we call them the same way:
-
-```js
-add(25, 100);  // returns 125
-```
-
-> **Developer Vocabulary:** Developers might say **call**, **execute**, **invoke** or **run**...a function.  In the context of functions, they are synonyms!
-
-### Let's Write a Function
-
-Here's a useful and common function used to generate a random integer between two numbers, inclusive:
-
-```js
-function addNums(num1, num2) {
-  console.log(num1 + num2);
-}
-```
-
-
-
-### ❓ Review Questions - Functions (1 min)
-
-<details>	
-<summary>
-How many different ways are there to define a function?
-</summary>
-<hr>
-
-**Three ways:**
-- Function Definition/Declaration
-- Function Expression
-- Arrow Function
-
-<hr>
-</details>
-
-<details>	
-<summary>
-What's the only practical difference between a Function Definition and a Function Expression?
-</summary>
-<hr>
-
-**Function Definitions can be called even if they are defined later in the source code. Trying to do so with a Function Expression will cause an error.**
-
-<hr>
-</details>
-
-
-## 4. More About Parameters & Arguments
-
-So, let's answer a common question:
->  _"What's the difference between a parameter and an argument?"_
-
-<img src="https://i.imgur.com/u5p9n7m.jpg">
-	
-Arguments are the data being passed to the function.
-
-Arguments are assigned to the parameters positionally. In the example above, the `bottle` parameter would be assigned the string "green bottle" because they are the first parameter and argument.
-
-Parameters become local variables inside the statement body of the function. Therefore, in the example above, `bottle` and `cap` are variables that can be accessed (and even updated) from anywhere within the function.
+- **Good:** calculateArea
+  (describes what it does, short, and uses camelCase)
   
-Just as when naming variables and functions, it's important to name parameters using identifiers that are representative of the data being passed to them.
+![GBU](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.giphy.com%2Fmedia%2F7ZgBm32jWGn72%2Fgiphy.gif&f=1&nofb=1)
 
-### Functions as Arguments
+#### Calling a function
 
-In JavaScript, functions are passed around and treated like data because they are - they're objects!  Programming languages that treat functions this way are said to have 'first-class functions', meaning that it treats functions as 'first-class citizens'.  These terms are a convenient shorthand for explaining that functions have all the same rights and abilities as any other object.  
+To run the code in a function, we **call**, or invoke, the function by using the function name followed by parentheses.
 
-A function is a JS expression, so they can be used anywhere an expression is expected, i.e., as arguments, returned from another function, etc.
-  
-### Passing an Anonymous Function
+Remember our function showMovie?
 
-Certain functions and methods (functions attached to an object) require that a function be provided as an argument.
+What happens if we just type `showMovie`?
 
-For example, the `forEach` method on arrays:
-	
+Now we add the parentheses.
+
 ```js
-const colors = ['red', 'green', 'blue'];
-	
-colors.forEach(function(color) {
-  console.log(color);
-});
+showMovie()
 ```
-	
-Since the function provided to the `forEach` will never be called from anywhere else in the code, we don't need to bother to create a separate named function and pass it in.
 
-Anonymous functions like shown above are very convenient!
+### Arguments and Parameters
 
-### ❓ Review Questions - Parameters & Arguments
+#### Syntax - Parameters & Arguments
 
-<details>	
-<summary>
-What's the difference between a Parameter and an Argument?
-</summary>
-<hr>
+**Parameters** are the names listed in the function definition.
 
-**Parameters are the placeholders when the function is defined that accept data. The arguments are the data being passed to the function when the function is called.**
+Let's write a function that calculates the area of a rectangle.
 
-<hr>
-</details>
-
-<details>	
-<summary>
-Explain how arguments are assigned to which parameters.
-</summary>
-<hr>
-
-**By position. The first argument is assigned to the first parameter, etc.**
-
-<hr>
-</details>
-
-## 6. Further Study
-
-### Fewer Arguments Than Parameters Defined
-
-JavaScript is very flexible and won't complain when the number of arguments is not the same as the number of parameters defined.
-
-If fewer arguments are passed than parameters defined, then the parameter variables without a matching argument would be set to `undefined`.
-
-> Note: Unlike some other programming languages, JavaScript won't complain if fewer (or extra) arguments are passed to a function.  However, a function that depends on certain arguments to do its job might throw an error or return an unexpected result if it doesn't receive the arguments expected.
-
-### Extra Arguments Than Parameters Defined
-
-Let's pretend you need to write a function that accepts an unknown number of arguments.
-
-For example, let's say we would like to be able to provide any number of "time" arguments to the `getPointsScored ` function we saw earlier and return a total number of points scored.
-
-First, let's ignore the fact that typically we could code the function to accept an array of times, e.g.,
+We need to provide our `calculateArea` function with a width and a length so we won't need to create a separate function every time we want to measure the dimensions of a new room.
 
 ```js
-function getPointsScored(elapsedTimes) {
-  // code to iterate over the elapsedTimes array...
+const calculateArea = (width, length) => {
+  console.log(width * length)
+}
+
+calculateArea(5, 3); // 15
+calculateArea(12, 16); // 192
+
+```
+
+1. Width and length are our parameters. Note that they are in a comma separated list. This tells our function that we are going to give it a width and a length.
+2. There is nothing special about the words `width` and `length` here. These are just descriptive names to remember what information that is being given to our function. We could use other names as well i.e. `width` and `height`, `l` and `w`, etc
+3. When the name of the function is followed by `()` the function is being called. By passing comma separated values in between the parentheses (i.e. arguments) correlate to the name of the parameters when the function was declared. Ex: `5` relates to `width` and `3` relates to `length`. Note that the order does matter.
+
+To write functions with more than one parameter, use a comma separated list:
+
+e.g., (parameter1, parameter2, parameter3, parameter4, etc.)
+
+Here is an example of a function with four strings as parameters:
+
+```js
+const greetUser = (firstName, lastName, year, city) => {
+  console.log(`Hello ${firstName} ${lastName}, I was born in ${year} and I'm from ${city}.`)
 }
 ```
 
-Here's how we could write `getPointsScored` to accept any number of individual "time" arguments using ES2015's [Rest parameters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters):
+> Check: What would happen if we called the function with the following arguments?
 
 ```js
-function getPointsScored(...times) {
-  // times will be an array holding the args (see Rest Parameters in the docs)
-  // Perfect use case for the Array.reduce method, but that's another day...
-  let totalPoints = 0;
-  times.forEach(function(time) {
-    if (time < 30) {
-      totalPoints += 100;
-    } else if (time < 60) {
-      totalPoints += 75;
-      return 75;
-    } else {
-      totalPoints += 25;
-    }
-  });
-  return totalPoints;
-}
-	
-const points = getPointsScored(16, 99, 32, 60);
+greetUser('Bruce', 'Wayne', 1939, 'Gotham')
 ```
 
-> Note:  Prior to ES2015, we would use the special [arguments](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments) keyword available within non-arrow functions. `arguments` is a JS object that has a `length` property and allows its values to be accessed via _square bracket_ notation.
+![Batman](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.giphy.com%2Fmedia%2F3xz2BLBOt13X9AgjEA%2Fgiphy.gif&f=1&nofb=1)
 
-### ES2015 Default Parameters
+> What would happen if we didn't provide all of the parameters?
 
-What if your function requires certain arguments and you want to provide a default value for the parameter if an argument is not supplied when the function is invoked?
+The code in a function will not run when the function is defined. The code will only run when the function is called.
 
-Prior to ES2015, here is a trivial example of what we had to do:
 
+
+## Scope 
+### Blocks
+
+A Block statement is used to group code together. To create a block, we use a pair of curly braces:
+<!-- start code block file="snippets/block.js" -->
 ```js
-function setColor(bicycle, color) {
-  // set color to 'purple' if not provided
-  bicycle.color = color || 'purple';
-}
-
-const bike = new Bicycle();
-setColor(bike, 'blue');  // sets color to blue
-setColor(bike);  // sets color to purple by default
-```
-Now, using **default parameters**, we can do this:
-
-```js
-function setColor(bicycle, color = 'purple') {
-  bicycle.color = color;
+{
+  // The inside of a multiline block
 }
 ```
+<!-- end code block -->
 
-Any expression can be provided as a default, including objects, etc.
-
-### Immediately Invoked Function Expressions (IIFE)
-
-One way we can prevent our code from leaking into the global scope is by wrapping it with a construct known as an **Immediately Invoked Function Expression**, or "IIFE" (pronounced "iffy").  It looks like this:
-
+Blocks are also used in functions, conditionals and loops:
+<!-- start code block file="snippets/block-examples.js" -->
 ```js
-(function() {
-  'use strict';
-
-  // your code here...
-	
-})();
+if ( /* true || false */ ) { /* within the block, body of conditional */  }
+for ( /* let i = 0; ...*/ ) { /* within the block, body of loop */ }
+while ( /* i < num ... */ ) { /* within the block, body of loop */ }
+function ( /* arg1, arg2 */ ) { /* within the block, body of function */ }
 ```
+<!-- end code block -->
 
-<details>	
-<summary>
-Why do IIFEs virtually prevent variables and functions from being created in the global scope?
-</summary>
-<hr>
+In addition to grouping code together, a block creates a new, _localized_, scope for the variables defined within the block.
 
-**Variables and functions defined within a function, including an Immediately Invoked Function Expression (IIFE), are scoped to that function, not global scope.**
+### Scope
+When declaring variables using the ES6 `let` and `const` initializers inside of a code block, these variables have _block scope_, meaning the variables are only recognized in the scope of the block they have been created (or declared) in.
 
-<hr>
-</details>
+You can think of scope as a collection of nested boxes. Each scope acts as a container in which variables and functions can be declared. While JavaScript is executing code within a scope, it only has access to variables declared in the current scope, parent scopes, and the global scope.
 
-You are unlikely to see or use an IIFE until much later in this course, but it is a good pattern to recognize.
+Scopes in JavaScript come in two flavors: *block scope* and *function scope*. When you create a function, that function has it's own scope.  Any variables defined within a function can only be accessed in the scope of that function.
 
-### Nesting Functions
-
-As the examples above have shown, we can define functions within functions!
-
-Why would we want to do this? Well, Perhaps an outer function needs a "helper" function that would only be relevant to a given function. It would be good programming practice to "hide" that function from the rest of the program by nesting it within the function that actually needs it.
-
-For example (no need to execute this):
-
+**The following are examples of block and function scopes:**
+<!-- start code block file="snippets/scope-creation.js" -->
 ```js
-function openNewAccount(name, openingBalance) {
-  let acctNum = generateAcctNum();
-  
-  // createAccount is a function available outside this function
-  let acct = createAccount(acctNum, openingBalance);
-  return acct;
-  
-  // helper function that provides a unique account number
-  function generateAcctNum() {
-    return Date.now();  // super amazing algorithm :)
-  }
+{ /* creates block scope */ }
+
+if { /* creates block scope */ }
+for ( /* ... */ ) { /* creates block scope */ }
+while ( /* ... */ ) { /* creates block scope */ }
+function ( /* ... */ ) { /* creates a function scope */ }
+```
+<!-- end code block -->
+
+#### Demo - Identifying Global and Local (block) scopes
+
+The outer most scope of a program is the _global scope_ and all block and function scopes are considered _local scopes_. Variables are accessible within the scope they are declared:
+
+<!-- start code block file="snippets/block-scope.js" -->
+```js
+const name = 'Danny' // this variable is being declared in the "global scope"
+{
+  const name = 'Caleb'  // this variable is being declared in a "block scope"
+}
+console.log(name) // prints 'Danny' because this line is being run in the global scope and NOT the block scope of the program.
+
+// name = 'Caleb' is limited in scope to the block in which it is defined
+```
+<!-- end code block -->
+
+Variables are _also_ accessible to any inner scopes (child scopes) and can be reassigned locally without modifying the value on a global level.:
+
+<!-- start code block file="snippets/child-scope-vars.js" -->
+```js
+// global scope
+let x = 1
+
+if (true) {
+  // local scope
+  x = 2
+  console.log(x) // Since x modified in the local scope the output will be 2
+}
+// global scope
+console.log(x)  // Since this line is outside of the local scope the output will be 1
+```
+<!-- end code block -->
+
+However, variables declared in local scopes are not accessible to parent scopes:
+
+<!-- start code block file="snippets/parent-scope-vars.js" -->
+```js
+// global scope
+const x = 1
+
+if (true) {
+  // local scope
+  const y = x // we declare a variable of y and assign it the value found in x
+  console.log(y)  // 1
+}
+// global scope
+console.log(x)  // 1
+console.log(y)  // ReferenceError: y is not defined <-- we get this error because y is not declared in the global scope.
+```
+<!-- end code block -->
+
+Variables are not accessible from sibling scopes:
+<!-- start code block file="snippets/sibling-scope.js" -->
+```js
+if (true) {
+  // local scope of 1st sibling
+  const a = 1
+  console.log(a) // 1
+}
+
+if (true) {
+  // local scope of 2nd sibling
+  console.log(a) // ReferenceError: a is not defined
 }
 ```
+<!-- end code block -->
 
-As you can see, there's a nifty `generateAcctNum` function in there and it's only relevant when a new account is opened, so it's nested within the `openNewAcount` function.
-
-
-## References
-
-[MDN Functions Reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions)
-
-
-
-# Pt II - Scope
-
-<img src="https://i.imgur.com/fe5VQ4M.jpg">
-
-# JavaScript Scope
-
-| Learning Objectives - SWBAT |
-| :--- |
-| Describe What Scope Is |
-| Describe How JS Looks for Variables in the Scope Chain |
-
-## Road Map
-1. What is Scope?
-2. Types of Scope in JavaScript
-3. The Scope Chain
-4. Further Study
-
-## 1. What is Scope?
-
-In general, the **concept of scope** in computer programming pertains to the **accessibility** of variables and functions from a given point of the code. In other words, as you write a line of code, what variables and functions do you have access to?
-
-If a line of code doesn't have access to a variable/function, we could say that variable/function is "out of scope".
-
-More commonly, however, we think of **a scope** as a set of variables and functions that are defined within that scope.
-
-## 2. Types of Scope in JavaScript
-
-JavaScript has three types of scope:
-
-- **Global Scope**:  There's always a single global scope which lives at the top of the scope chain.
-- **Function Scope**, also known as **Local Scope**:  Every time a function runs, it creates its own function/local scope. 
-- **Block Scope**: This scope is courtesy of ES2015's `let` & `const` keywords and in general, define a scope within a code block using curly braces.
-
-### Why the Different Types of Scope?
-
-There's a concept in programming known as [The Principle of Least Privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege).
-
-One of the keys of this principle is based on the idea that limiting the accessibility of variables (and functions) helps reduce bugs in the code - think of it as a form of "code safety".
-
-### Global Scope
-
-There's only a single global scope.
-
-If a variable is declared outside of a function, it will "live" in global scope.
-
+Different scopes can have variables that are declared with the same name and
+they do not conflict or know about each other.
+<!-- start code block file="snippets/different-scope-vars.js" -->
 ```js
-// main.js
+// global scope
+const x = 1
+console.log(x) // 1
 
-let size, board;
-
-function initialize() {
-  size = getBoardSize();
-  board = generateBoard(size);
-  renderBoard();
+if (true) {
+  // local scope
+  const x = 2
+  console.log(x) // 2
 }
+// global scope
+console.log(x) // 1
 ```
+<!-- end code block -->
 
-<details>	
-<summary>
-❓ What variables/functions above exist in the global scope?
-</summary>
-<hr>
+As we have seen, utilizing scope provides great utility. Scoping provides a way to __encapsulate__ data and prevent other parts of our applciation from accessing variables declared within a certain scope. By being aware of how scope is created, and by using scope effectively, you will write code that is more efficient, organized and less error prone.
 
-**`size` and `board`**
+![whew](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.giphy.com%2Fmedia%2FijGS9TME6iN7W%2Fgiphy.gif&f=1&nofb=1)
 
-<hr>
-</details>
+#### Best Practices:
+- Apply the [Principle of Least Privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege): Allow code to access the information and resources that are necessary for it to run, and nothing more.
+- Encapsulate code as much as possible in scope using functions and blocks
 
-### Function (local) Scope
 
-A new function scope is created for each executing function.
 
-Each variable and function defined within the function would be included within that function's scope.
 
-> Note:  The Further Study section discusses how `let` and `const` variables may have a more limited "block" scope if not defined in the top-level of the function.
+### Return Statements
 
-The variables within a function's scope only exist during its execution (unless something known as a "closure" exists - yup, another day).
+So far, the functions that we have created have simply printed the result of whatever logic we have defined to operate in the function.  
+
+However, we might want our functions to _return_ a value back to our program or even exit a function before it runs some logic.
+
+We can accomplish these tasks by using the `return` keyword inside of our function definitions.
+
+#### Why use return statements?
+
+Sometimes we don't necessarily want to show or log something immediately to the console, or update something on the page.
+
+Instead, we might just want to update a variable within a function, or even call another function without showing its effects.
+
+To do this, we use `return` statement.
+
+Let's look at an example of updating a variable within a function.
 
 ```js
-function initialize() {
-  const playerName = getPlayerName();
-  size = getBoardSize();
-  board = generateBoard(size, playerName);
-  renderBoard();
+const doubleValue = (x) => {
+  return x * 2
 }
 ```
 
-<details>	
-<summary>
-❓ What variables/functions live within the scope of the <code>initialize</code> function?
-</summary>
-<hr>
+The `return` statement _stops the execution of a function_ and returns a value from that function.
 
-**`playerName`**
+#### Storing a return value in a variable
 
-<hr>
-</details>
+When we `return` something, it ends the function's execution and "spits out" whatever we are returning.
 
-A major benefit of having different scopes is being able to use the same names for variables in different functions!  If there were only one scope, this wouldn't be possible.
+We can then store this returned value in another variable.
 
-### Block Scope
 
-To give you practice reading and researching independently, the topic of block scope is covered in the Further Study section of this lesson. 
 
-## 3. The Scope Chain
+![Beatles](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia1.giphy.com%2Fmedia%2F2kMQxlmpgVGlxSvT23%2Fgiphy.gif%3Fcid%3D3640f6095c5a818659526164635015da&f=1&nofb=1)
 
-When a variable or function is referenced in code, JavaScript must find that identifier in memory and retrieve its value or reference.
 
-First, JS will look for the variable or function in the current scope that the code is executing in.
+## Lesson Recap
 
-However, if JS doesn't find the identifier, up the **scope chain** it goes looking for it!
+Functions are very important in JavaScript, and you must have a thorough understanding of how to define them, as well as how you can use them.
 
-Let's review the following diagram which identifies 3 different scopes:
-
-<img src="https://i.imgur.com/UtIoe7F.png">
-
-Notice how the scopes are given a name followed by a list of the identifiers defined within that scope:
-
-| Scope of... | Identifiers defined within... |
-|---|---|
-| global | `a`, `foo` |
-| foo | `x`, `b`, `bar` |
-| bar | `y`, `c` |
-
-### Human Computer Demo 
-
-Allow me to "execute" the function and explain what the computer is doing as it accesses variables and calls functions.
-
-### You can go up the scope chain, but not down it!
-
-As demonstrated by the "human computer", JavaScript searches the current scope then up the scope chain, but not down it.
-
-If JS gets to the _global scope_ (which is the top of the food chain in the scope hierarchy) and still can't find what it's looking for, that's when your program crashes due to a **ReferenceError**.
-
-<details>	
-<summary>
-❓ Would the function <code>foo</code> have access to the variable <code>c</code>?
-</summary>
-<hr>
-
-**No, because `c` is not _up_ the scope chain**
-
-<hr>
-</details>
-
-## 4. Further Study
-
-### Block Scope
-
-Both `let` and `const` define variables that can only be accessed within the **code block** they are defined in.
-
-A _code block_ is created by using curly braces.
-
-The following code from [MDN's docs about let](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let) demonstrates differences between `let` and `var`:
-
-```js
-function varTest() {
-  var x = 1;
-  if (true) {
-    var x = 2;  // same variable!
-    console.log(x);  // 2
-  }
-  console.log(x);  // 2
-}
-
-function letTest() {
-  let x = 1;
-  if (true) {
-    let x = 2;  // different variable
-    console.log(x);  // 2
-  }
-  console.log(x);  // 1
-}
-```
-
-and another example of their differences:
-
-<img src="https://i.imgur.com/K0uJx2P.jpg">
-
-### More About Global Scope
-
-In our browsers, the global scope is represented by the `window` object.
-
-It is at the top of the scope chain and its properties are available to **every** function we write.
-
-It is generally bad practice for our programs to create variables in the global scope.  Doing so risks us overwriting data in use by JS libraries/frameworks or other routines.
-
-Creating lots of global variables is referred to as "polluting the global scope", and we all know that it's not nice to pollute!
-
-If we define a variable (or a function) within the global scope, it becomes a property on the `window` object. You can see this in action by typing `var pollution = 'sucks'` in the console, then type `window.` (don't forget the dot), scroll down and find the pollution we have created - yuck!
-
-> Although using both `var` and `let` in the global scope results in a global variable being created, interestingly, those created using `let` and `const` do not create properties on the `window` object like `var` does.
-
-## References
-
-[MDN Functions Reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions)
+## Resources
+  - [Why use functions?](http://circuits-assets.generalassemb.ly/prod/asset/5016/Slide-17-Chart.svg)
+  - [Declarations & Expressions Video](https://generalassembly.wistia.com/medias/g1w03wkvth)
+  - [When to Use Declarations & Expressions](https://www.freecodecamp.org/news/when-to-use-a-function-declarations-vs-a-function-expression-70f15152a0a0/)
