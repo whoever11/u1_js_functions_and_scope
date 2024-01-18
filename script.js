@@ -35,7 +35,7 @@ function sayHello (myName, dayOfWeek, colorOfShirt) {
     console.log(`Hello ${myName}, have a great ${dayOfWeek}, you are 
     wearing a ${colorOfShirt} shirt`)
   }
-
+//parameters  and arguments have to match up,, console log does not have too
   sayHello("Cj Donaldson", "Friday", "Green")
   //functions are reusable
   //we declare them once, and you can call as many times as you want
