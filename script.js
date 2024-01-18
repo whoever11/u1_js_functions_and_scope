@@ -56,5 +56,44 @@ function doMath (num1, num2) {
 
 const addNums = (num1, num2) => { 
     console.log(num1 +num2)}
-addNums(100, 35)
+// addNums(100, 35)
 // above is difference between function declaration and arrow function
+
+// SCOPE LESSON 
+
+// const complexFunction = (num1, num2) => {
+//     console.log (num1 + num2)
+
+//     const childFunction = (num1, num2) => {
+//         console.log(num1 - num2)
+//     }
+//     childFunction(5, 2)
+// }
+// complexFunction(10, 5)
+
+//SCOPE IS HOW WE ENCAPSULATE DATA INSIDE OF BLOCKS TO USE
+// AND HOW THAT CAN GO WRONG AND RUIN EVERYTHING
+// TWO KINDS OF SCOPES-> GLOBAL AND LOCAL
+// GLOBAL SCOPE IS PASSED INTO ANYTHING
+// GLOBAL SCOPE CAN BE PASSED INTO LOCAL SCOPE
+// LOCAL SCOPE CONTAINED INSIDE OF SET OF BLOCKS
+// LOCAL SCOPE CAN NOT BE PASSED INTO GLOBAL SCOPE
+// LOCAL SCOPES CANT NOT BE PASSED INTO OTHER LOCAL SCOPES
+//EX BELOW
+
+//This is Global scope
+const name = "Cj"
+const location= "Florida"
+// this is local scope
+{
+    const name = "Dasheem"
+    const favoriteMovie = "Interstellar"
+    console.log(name)
+    console.log(location)
+}
+
+{
+    console.log("line 96", name)
+    console.log("line 97", location)
+}
+console.log(name)
