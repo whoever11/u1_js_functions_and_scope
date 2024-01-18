@@ -31,8 +31,12 @@
 
 let firstName = 'Cj'
 
-function sayHello (myName) {
-    console.log(`Hello ${myName}`)
+function sayHello (myName, dayOfWeek, colorOfShirt) {
+    console.log(`Hello ${myName}, have a great ${dayOfWeek}, you are 
+    wearing a ${colorOfShirt} shirt`)
   }
 
-  sayHello("Cj Donaldson")
+  sayHello("Cj Donaldson", "Friday", "Green")
+  //functions are reusable
+  //we declare them once, and you can call as many times as you want
+  //sayHello("Dasheem")//added a second name
