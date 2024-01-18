@@ -46,6 +46,15 @@ function doMath (num1, num2) {
     console.log(num1 + num2)
   }
 
-  doMath(5, 10)
-  doMath(10, 10)
-  doMath(100, 10)
+//   doMath(5, 10)
+//   doMath(10, 10)
+//   doMath(100, 10)
+
+//Arrow Functions
+//we are creating a variable that stores a function
+//ex below
+
+const addNums = (num1, num2) => { 
+    console.log(num1 +num2)}
+addNums(100, 35)
+// above is difference between function declaration and arrow function
