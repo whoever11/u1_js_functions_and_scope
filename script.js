@@ -29,14 +29,23 @@
 // CONVERTING TO ARROW FUNCTIONS 
 //ex below of updated hello world with first name
 
-let firstName = 'Cj'
+// let firstName = 'Cj'
 
 function sayHello (myName, dayOfWeek, colorOfShirt) {
     console.log(`Hello ${myName}, have a great ${dayOfWeek}, you are 
     wearing a ${colorOfShirt} shirt`)
   }
-//parameters  and arguments have to match up,, console log does not have too
-  sayHello("Cj Donaldson", "Friday", "Green")
-  //functions are reusable
-  //we declare them once, and you can call as many times as you want
-  //sayHello("Dasheem")//added a second name
+// //parameters  and arguments have to match up,, console log does not have too
+//   sayHello("Cj Donaldson", "Friday", "Green")
+//   //functions are reusable
+//   //we declare them once, and you can call as many times as you want
+//   //sayHello("Dasheem")//added a second name
+
+//is a math function
+function doMath (num1, num2) {
+    console.log(num1 + num2)
+  }
+
+  doMath(5, 10)
+  doMath(10, 10)
+  doMath(100, 10)
